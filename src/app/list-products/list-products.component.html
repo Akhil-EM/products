@@ -1,0 +1,67 @@
+<div class="container">
+
+
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>
+          <input type="button" class="btn btn-primary" (click)="change_value()" value="{{btn_name}}">
+          </th>
+          <th>Product</th>
+          <th>Code</th>
+          <th>Release Date</th>
+          <th>Discription</th>
+          <th>Price</th>
+          <th>Rating</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody *ngIf='products_arry && products_arry.length'>
+      
+          <tr *ngFor="let i of products_arry">
+            <td>
+              <img *ngIf="flag" src="{{i.imageUrl}}"  class="image-des">   
+            </td>
+            <td>
+               {{i.productName}}
+            </td>
+            <td>
+                {{i.productCode}}
+            </td>
+            <td>
+                {{i.releaseDate}}
+            </td>
+            <td>
+              {{i.description}}
+            </td>
+            <td>
+                {{i.price}}
+            </td>
+            <td>
+                {{i.starRating}}
+                
+            </td>
+            <td>
+
+                <form name="button_form"  method="POST" name="readmore" (ngSubmit)="edit_product(i._id)" >
+                  <!-- <input  type="hidden" id="custId" name="id" value="{{i._id}}" ng-model="firstName">     -->
+                    <input type="submit" name="submit" value="Edit" class="btn btn-warning"/>
+              </form>
+                <br>
+                  <form name="button_form"  method="POST" name="readmore" (ngSubmit)="delete_product()">
+                    <input type="hidden" id="custId" name="id" value="{{i._id}}">
+                      <input type="submit" name="submit" value="Delete" class="btn btn-danger"/>
+                     
+                </form>
+            </td>
+            <td></td>
+          </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+</div>
